@@ -4,10 +4,126 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js"></script>
+    <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="main.js" defer></script>
     <title>Todo List</title>
 </head>
 <body>
-    <div class="content"></div>
+    <div class="content">
+        <div class="header">
+            <span class="logo">
+                Task
+                <span class="logo-checkbox">
+                <span class="iconify" data-icon="mdi-check"></span>
+            </span>iewer</span>
+        </div>
+        <div class="sidebar">
+            <ul class="sidebar-menu-container">
+                <li class="menu-item"><a href="" class="menu-link"><span class="iconify" data-icon="mdi-clipboard-check-multiple"></span> Projects</a>
+                    <ul class="projects-container">
+                        <li class="project-item sub-item"><a href="" class="menu-link">Personal</a></li>
+                        <li class="project-item sub-item"><a href="" class="menu-link">Work</a></li>
+                        <li class="project-item sub-item"><a href="" class="menu-link">Test</a></li>
+                    </ul>
+                </li>
+                <li class="add-item sub-item">
+                    <button type="button" class="btn add-project-btn">
+                        <span class="iconify" data-icon="mdi-plus"></span><span class="add-item-text">ADD PROJECT</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+
+            <div class="main-content">
+                <div class="section-title">All Projects</div>
+                <div class="project-container">
+                    <div class="project-info">
+                        <div class="title">Personal</div>
+                        <div 
+                            class="description"
+                            title="This is a personal project This is a personal project This is a personal projectThis is a personal project"
+                        >
+                            This is a personal project This is a personal project This is a personal projectThis is a personal project</div>
+                    </div>
+                    <div class="project-tasks">
+                        <div class="tasks">Pending</div>
+                        <div class="tasks-num">3</div>
+                        <div class="tasks">Completed</div>
+                        <div class="tasks-num">4</div>
+                    </div>
+                    <button type="button" class="btn project-btn">OPEN</button>
+                </div>
+            </div>
+
+            <!-- <div class="main-content project-content">
+                <div class="main-header">
+                    <button type="button" class="btn"><span class="iconify" data-icon="mdi-arrow-left"></span> All Projects</button>
+                    <div class="section-title">Personal</div>
+                </div>
+                <div class="task-container">
+                    <div class="priority-bar medium"></div>
+                    <div class="task-title">
+                        <input type="checkbox" name="check" id="check-1">
+                        <div class="due-date">20/12/2022</div>
+                        <div class="task-name">Do the laundry</div>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-edit"></span></button>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-trash"></span></button>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-chevron-down"></button>
+                    </div>
+                    <div class="task-expand">
+                        <div class="task-description">Click on the edit button (<span class="iconify" data-icon="mdi-edit"></span>) to add a description...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="task-container">
+                    <div class="priority-bar high"></div>
+                    <div class="task-title">
+                        <input type="checkbox" name="check" id="check-1">
+                        <div class="due-date">20/12/2022</div>
+                        <div class="task-name done">Do the laundry</div>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-edit"></span></button>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-trash"></span></button>
+                        <button type="button" class="btn"><span class="iconify" data-icon="mdi-chevron-down"></button>
+                    </div>
+                    <div class="task-expand hide">
+                        <div class="task-description">Click on the edit button (<span class="iconify" data-icon="mdi-edit"></span>) to add a description...
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn add-task-btn">
+                    <span class="iconify" data-icon="mdi-plus"></span><span class="add-item-text">ADD TASK</span>
+                </button>
+            </div> -->
+
+            <!-- <div class="main-content task-edit-content">
+                <div class="main-header">
+                    <button type="button" class="btn"><span class="iconify" data-icon="mdi-arrow-left"></span> Personal</button>
+                </div>
+                <form action="#" method="post" class="edit-form">
+                    <fieldset class="edit-fieldset">
+                        <legend>Edit task details</legend>
+                        <label for="title">Task</label>
+                        <input id="title" type="text" class="input" value="Do the laundry"></input>
+                        <label for="description">Description</label>
+                        <textarea id="description" type="text" class="input" rows="5">Description bla bla</textarea>
+                        <label for="due-date">Due date</label>
+                        <input id="due-date" type="date" class="input" value="2022-06-06"></input>
+                        <label for="priority">Priority</label>
+                        <div class="dropdown">
+                            <div class="priority-color low"></div>
+                            <select id="priority" class="input" value="low">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn add-task-btn save-btn">Save changes</button>
+                    </fieldset>
+                </form>
+            </div> -->
+        </div>
+    </div>
 </body>
 </html>

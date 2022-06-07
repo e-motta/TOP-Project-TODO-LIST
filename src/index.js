@@ -1,1 +1,2 @@
-console.log(`test`)
+import './reset.css';
+import './style.css';
