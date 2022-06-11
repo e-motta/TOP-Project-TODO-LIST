@@ -12,6 +12,7 @@ const component = ((project) => {
 
     const backBtn = document.createElement(`button`)
     backBtn.classList.add(`btn`)
+    backBtn.setAttribute(`id`, `back-all-projects`)
     backBtn.setAttribute(`type`, `button`)
 
     const spanArrowLeft = document.createElement(`span`)
@@ -36,6 +37,7 @@ const component = ((project) => {
     const editBtn = document.createElement(`button`)
     editBtn.classList.add(`btn`)
     editBtn.classList.add(`edit-btn`)
+    editBtn.setAttribute(`id`, `edit-project-btn`)
     editBtn.setAttribute(`type`, `button`)
 
     const spanEdit = document.createElement(`span`)
@@ -55,7 +57,7 @@ const component = ((project) => {
     for (let i = 0; i < project.tasks.length; i++) {
         const props = [project.tasks[i], i]
         const task = Task(...props)
-        
+
         projectContent.appendChild(task)  // **
         
         // NOTE: CALL ALL HTML CREATION (PROJECT, TASK...), THEN REACTIVE,
@@ -67,6 +69,7 @@ const component = ((project) => {
     const addTaskBtn = document.createElement(`button`)
     addTaskBtn.classList.add(`btn`)
     addTaskBtn.classList.add(`add-task-btn`)
+    addTaskBtn.setAttribute(`id`, `add-task-btn`)
     addTaskBtn.setAttribute(`type`, `button`)
 
     const spanAdd = document.createElement(`span`)

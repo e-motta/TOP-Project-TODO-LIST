@@ -4,7 +4,7 @@ import Header from './components/header.js';
 import Sidebar from './components/sidebar.js'
 import AllProjects from './components/allProjects.js'
 import Project from './components/project.js'
-import reactProject from './reactive/reactProject.js'
+import updateProject from './reactive/updateProject.js'
 
 
 const content = document.querySelector(`.content`)
@@ -57,7 +57,7 @@ const projects = [
 const props = projects.find(p => p.name === `Work`)
 main.appendChild(Project(props))
 
-reactProject(props)
+updateProject(props)
 
 
 // // To edit HTML directly // //

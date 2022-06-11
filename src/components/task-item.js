@@ -39,9 +39,13 @@ const component = ((task, i) => {
         'chevron-down': `Expand task`
     }
 
-    Object.entries(btnNamesMap).map(btnName => {
+    Object.entries(btnNamesMap).map((btnName) => {
         const btn = document.createElement(`button`)
         btn.classList.add(`btn`)
+        if (btnName[0] === `chevron-down` || `edit`) {
+            btn.classList.add(`${btnName[0]}-task-btn`)
+        }
+        btn.setAttribute(`id`, `${btnName[0]}-task-btn-${i}`)
         btn.setAttribute(`type`, `button`)
         btn.setAttribute(`title`, btnName[1])
         
@@ -57,6 +61,7 @@ const component = ((task, i) => {
 
     const taskExpand = document.createElement(`div`)
     taskExpand.classList.add(`task-expand`)
+    taskExpand.setAttribute(`id`, `task-expand-${i}`)
     taskExpand.classList.add(`hide`)  // **
 
     const taskDescription = document.createElement(`div`)
