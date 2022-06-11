@@ -54,10 +54,12 @@ const projects = [
     },
 ]
 
-const props = projects.find(p => p.name === `Work`)
-main.appendChild(Project(props))
+const props = [projects.find(p => p.name === `Work`)]
+main.appendChild(Project(...props))
 
-updateProject(props)
+updateProject(...props)
+
+
 
 
 // // To edit HTML directly // //

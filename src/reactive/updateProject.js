@@ -49,9 +49,6 @@ const displayContent = (project) => {
             dueDate.classList.remove(`due-date-done`)
             taskName.classList.remove(`done`)
         }
-        
-        const editTaskBtn = document.querySelector(`#edit-task-btn-${i}`)
-        editTaskBtn.addEventListener(`click`, navigateToEditTask)  // #
     }
 }
 
