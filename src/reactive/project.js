@@ -1,4 +1,4 @@
-// import navigation module
+import navigate from '../navigate.js'
 
 const addNavigation = () => {
         // *** Temp
@@ -10,13 +10,13 @@ const addNavigation = () => {
     
         // Project
         const allProjects = document.querySelector(`#back-all-projects`)
-        allProjects.addEventListener(`click`, navigateToAllProjects)  // #
+        allProjects.addEventListener(`click`, navigate.home)  // #
     
         const editProjectBtn = document.querySelector(`#edit-project-btn`)
         editProjectBtn.addEventListener(`click`, navigateToEditProject)  // #
     
-        const addTaskBtn = document.querySelector(`#add-task-btn`)
-        addTaskBtn.addEventListener(`click`, navigateToAddTask)  // #
+        const addTaskBtn = document.querySelector(`.add-task-btn`)
+        addTaskBtn.addEventListener(`click`, navigate.newTask)  // #
 
         const expandTasksBtns = document.querySelectorAll(`.chevron-down-task-btn`)
         expandTasksBtns.forEach((btn, i) => btn.addEventListener(`click`, () => {
@@ -76,13 +76,14 @@ const updateContent = (project) => {
         // Delete task
         const deleteTaskBtn = document.querySelector(`#trash-task-btn-${i}`)
         deleteTaskBtn.addEventListener(`click`, deleteTask)  // #
+        // navigate back to project
     }
 }
 
 const react = (project) => {
-    updateContent(project)
     addNavigation()
     displayContent(project)
+    updateContent(project)
 }
 
 export default react

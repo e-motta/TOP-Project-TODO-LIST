@@ -1,20 +1,14 @@
-// import navigation module
+import navigate from '../navigate.js'
 
 const addNavigation = () => {
-    // * Temp
-    const navigateToAllProjects = () => console.log(`nav all proj`)
-    const navigateToProject = () => console.log(`project`)
-    const navigateToAddProject = () => console.log(`nav add proj`)
-
-    //
     const allProjects = document.querySelector(`#all-projects`)
-    allProjects.addEventListener(`click`, navigateToAllProjects)
+    allProjects.addEventListener(`click`, navigate.home)
 
     const menuItems = document.querySelectorAll(`.subitem`)
-    menuItems.forEach(item => item.addEventListener(`click`, navigateToProject))
+    menuItems.forEach(item => item.addEventListener(`click`, navigate.project))
 
     const addProjectBtn = document.querySelector(`ul>.add-project-btn`)
-    addProjectBtn.addEventListener(`click`, navigateToAddProject)
+    addProjectBtn.addEventListener(`click`, navigate.newProject)
 }
 
 const react = () => {

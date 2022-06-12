@@ -454,3 +454,7 @@ textarea {
     justify-self: start;
     margin-top: 30px;
 }
+
+.add-item-text {
+    pointer-events: none;
+}

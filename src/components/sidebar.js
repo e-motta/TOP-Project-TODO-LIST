@@ -1,4 +1,4 @@
-const component = (() => {
+const component = ((projects) => {
     const sidebar = document.createElement(`div`)
     sidebar.classList.add(`sidebar`)
 
@@ -24,15 +24,14 @@ const component = (() => {
     const subitemsContainer = document.createElement(`ul`)
     subitemsContainer.classList.add(`subitems-container`)
 
-    const subitems = [`Personal`, `Work`]
-
-    for(const subitem of subitems) {
+    for(const project of projects) {
         const li = document.createElement(`li`)
         li.classList.add(`subitem`)
 
         const a = document.createElement(`a`)
         a.classList.add(`menu-link`)
-        a.innerText = subitem
+        a.id = project.id
+        a.innerText = project.name
 
         li.appendChild(a)
 
@@ -64,6 +63,6 @@ const component = (() => {
     sidebar.appendChild(sidebarMenuContainer)
 
     return sidebar
-})();
+});
 
 export default component;

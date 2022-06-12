@@ -18,17 +18,19 @@ import reactEditTask from './reactive/edit-task.js'
 import projects from './projects.js'
 
 const navigate = ((projects) => {
-    const loadBasics = () => {
+    const initialLoad = () => {
         const content = document.querySelector(`.content`)
     
         content.appendChild(Header)
-        content.appendChild(Sidebar)
+        content.appendChild(Sidebar(projects))
         
         reactSidebar()
         
         const main = document.createElement(`div`)
         main.classList.add(`main`)
         content.appendChild(main)
+
+        home(projects)
     }
 
     const home = () => {
@@ -40,11 +42,8 @@ const navigate = ((projects) => {
         reactAllProjects(...props)
     }
 
-    const project = (e) => {
-        console.log(e.target.id)
+    const project = e => {
         const project = projects.find(p => p.id.toString() === e.target.id)
-        console.log(project)
-
         const props = [project]
 
         const main = document.querySelector(`.main`)
@@ -67,11 +66,14 @@ const navigate = ((projects) => {
         reactEditProject(project)
     }
 
-    const newTask = () => {
+    const newTask = e => {
         const main = document.querySelector(`.main`)
         main.replaceChildren(NewTask())
+        console.log(e.target)
 
-        reactNewTask()
+        const project = projects.find(p => p.id.toString() === e.target.id)
+        console.log(project)
+        reactNewTask(project)
     }
 
     const editTask = (project, task) => {
@@ -82,7 +84,7 @@ const navigate = ((projects) => {
     }
 
     return {
-        loadBasics,
+        initialLoad,
         home,
         project,
         newProject,

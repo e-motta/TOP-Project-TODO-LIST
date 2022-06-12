@@ -1,6 +1,6 @@
 import TaskForm from './task-form.js'
 
-const component = ((projectName) => {
+const component = (() => {
     const taskAddContent = document.createElement(`div`)
     taskAddContent.classList.add(`main-content`)
     taskAddContent.classList.add(`task-edit-content`)
@@ -17,8 +17,6 @@ const component = ((projectName) => {
     span.setAttribute(`data-icon`, `mdi-arrow-left`)
 
     backBtn.appendChild(span)
-
-    backBtn.appendChild(document.createTextNode(projectName))
 
     mainHeader.appendChild(backBtn)
 

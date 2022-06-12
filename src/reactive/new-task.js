@@ -21,12 +21,15 @@ const addNavigation = () => {
     saveBtn.addEventListener(`click`, newTask)
 }
 
-const displayContent = () => {
+const displayContent = (project) => {
+    const backBtn = document.querySelector(`.main-header>.btn`)
+    backBtn.appendChild(document.createTextNode(` ` + project.name))
+
     const priorityColor = document.querySelector(`.priority-color`)
     priorityColor.classList.add(`low`)
 }
 
-const updateContent = (task) => {
+const updateContent = (project) => {
     const taskInput = document.querySelector(`#title`)
     const descriptionInput = document.querySelector(`#description`)
     const dueDate = document.querySelector(`#due-date`)
@@ -36,18 +39,18 @@ const updateContent = (task) => {
     saveBtn.addEventListener(`click`, e => {  // use project module methods?
         e.preventDefault()
 
-        task.name = taskInput.value
-        task.description = descriptionInput.value
-        task.dueDate = dueDate.value
-        task.priority = priority.value
+        // task.name = taskInput.value
+        // task.description = descriptionInput.value
+        // task.dueDate = dueDate.value
+        // task.priority = priority.value
     })
 }
 
-const react = (task) => {
+const react = (project) => {
     addResponsive()
     addNavigation()
-    displayContent()
-    updateContent(task)
+    displayContent(project)
+    updateContent(project)
 }
 
 export default react

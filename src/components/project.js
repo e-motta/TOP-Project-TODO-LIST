@@ -59,17 +59,13 @@ const component = ((project) => {
         const task = Task(...props)
 
         projectContent.appendChild(task)  // **
-        
-        // NOTE: CALL ALL HTML CREATION (PROJECT, TASK...), THEN REACTIVE,
-        // IN A SINGLE COMPONENT
-        // THEN IMPORT IT INTO INDEX.JS
     }
 
     // Add task button
     const addTaskBtn = document.createElement(`button`)
     addTaskBtn.classList.add(`btn`)
     addTaskBtn.classList.add(`add-task-btn`)
-    addTaskBtn.setAttribute(`id`, `add-task-btn`)
+    addTaskBtn.setAttribute(`id`, project.id)
     addTaskBtn.setAttribute(`type`, `button`)
 
     const spanAdd = document.createElement(`span`)

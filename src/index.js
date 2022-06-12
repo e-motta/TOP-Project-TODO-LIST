@@ -6,8 +6,7 @@ import navigate from './navigate.js'
 import projects from './projects.js'
 
 
-navigate.loadBasics()
-navigate.home(projects)
+navigate.initialLoad()
 
 
 
