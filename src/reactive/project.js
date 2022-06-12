@@ -1,6 +1,6 @@
 // import navigation module
 
-const addListeners = () => {
+const addNavigation = () => {
         // *** Temp
         const navigateToAllProjects = () => console.log(`temp`)
         const navigateToEditProject = () => console.log(`temp`)
@@ -77,9 +77,12 @@ const updateContent = (project) => {
         const deleteTaskBtn = document.querySelector(`#trash-task-btn-${i}`)
         deleteTaskBtn.addEventListener(`click`, deleteTask)  // #
     }
+}
 
-    addListeners()
+const react = (project) => {
+    updateContent(project)
+    addNavigation()
     displayContent(project)
 }
 
-export default updateContent
+export default react

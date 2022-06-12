@@ -10,6 +10,7 @@ const component = (() => {
 
     const menuLink = document.createElement(`a`)
     menuLink.classList.add(`menu-link`)
+    menuLink.id = `all-projects`
 
     const iconifyClipboard = document.createElement(`span`)
     iconifyClipboard.classList.add(`iconify`)
@@ -41,9 +42,10 @@ const component = (() => {
     menuItem.appendChild(subitemsContainer)
     sidebarMenuContainer.appendChild(menuItem)
 
-    const addProjectBtn = document.createElement(`div`)
+    const addProjectBtn = document.createElement(`button`)
     addProjectBtn.classList.add(`btn`)
     addProjectBtn.classList.add(`add-project-btn`)
+    addProjectBtn.type = `button`
 
     const iconifyPlus = document.createElement(`span`)
     iconifyPlus.classList.add(`iconify`)

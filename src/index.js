@@ -2,15 +2,22 @@ import './reset.css';
 import './style.css';
 import Header from './components/header.js';
 import Sidebar from './components/sidebar.js'
-import AllProjects from './components/allProjects.js'
+import AllProjects from './components/all-projects.js'
 import Project from './components/project.js'
-import updateProject from './reactive/updateProject.js'
-
+import NewProject from './components/new-project.js'
+import EditProject from './components/edit-project.js'
+import reactSidebar from './reactive/sidebar.js'
+import reactAllProjects from './reactive/all-projects.js'
+import reactProject from './reactive/project.js'
+import reactNewProject from './reactive/new-project.js'
+import reactEditProject from './reactive/edit-project.js'
 
 const content = document.querySelector(`.content`)
 
 content.appendChild(Header)
 content.appendChild(Sidebar)
+
+reactSidebar()
 
 const main = document.createElement(`div`)
 main.classList.add(`main`)
@@ -54,15 +61,41 @@ const projects = [
     },
 ]
 
-const props = [projects.find(p => p.name === `Work`)]
-main.appendChild(Project(...props))
+// // SHOW NEW PROJECT PAGE // // 
+// const project = projects.find(p => p.name === `Work`)
+// const props = [project]
+// main.appendChild(NewProject(...props))
 
-updateProject(...props)
+// reactNewProject(...props)
+
+// // SHOW EDIT PROJECT PAGE // // 
+
+// const project = projects.find(p => p.name === `Work`)
+// const props = [project]
+// main.appendChild(EditProject(...props))
+
+// reactEditProject(...props)
 
 
+// // SHOW ALL PROJECTS PAGE // // 
+
+// const props = [projects]
+// main.appendChild(AllProjects(...props))
+
+// reactAllProjects(...props)
+
+
+// // SHOW PROJECT PAGE // // 
+
+// const project = projects.find(p => p.name === `Work`)
+// const props = [project]
+// main.appendChild(Project(...props))
+
+// reactProject(...props)
 
 
 // // To edit HTML directly // //
+
 // const content = document.querySelector(`.content`)
 
 // const main = document.querySelector(`.main`)
