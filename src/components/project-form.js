@@ -1,4 +1,4 @@
-const component = ((project, title, saveBtn) => {
+const component = ((project, title, saveBtnName) => {
     const form = document.createElement(`form`)
     form.classList.add(`edit-form`)
     form.action = `#`
@@ -41,6 +41,14 @@ const component = ((project, title, saveBtn) => {
     fieldset.appendChild(descriptionInput)
 
     form.appendChild(fieldset)
+
+    const saveBtn = document.createElement(`button`)
+    saveBtn.classList.add(`btn`)
+    saveBtn.classList.add(`add-task-btn`)
+    saveBtn.classList.add(`save-btn`)
+    saveBtn.type = `submit`
+    saveBtn.appendChild(document.createTextNode(saveBtnName))
+
     form.appendChild(saveBtn)
 
     return form

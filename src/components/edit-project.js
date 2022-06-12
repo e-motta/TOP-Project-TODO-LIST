@@ -25,14 +25,9 @@ const component = ((project) => {
     projectEditContent.appendChild(mainHeader)
 
     const title = `Edit project details`
-    const saveBtn = document.createElement(`button`)
-    saveBtn.classList.add(`btn`)
-    saveBtn.classList.add(`add-task-btn`)
-    saveBtn.classList.add(`save-btn`)
-    saveBtn.type = `submit`
-    saveBtn.appendChild(document.createTextNode(`Save changes`))
+    const saveBtnName = `Save changes`
 
-    projectEditContent.appendChild(ProjectForm(project, title, saveBtn))
+    projectEditContent.appendChild(ProjectForm(title, saveBtnName))
 
     return projectEditContent
 });

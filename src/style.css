@@ -437,6 +437,10 @@ textarea {
     align-items: start;
 }
 
+#priority {
+    width: 6.7em;
+}
+
 .priority-color {
     height: 22px;
     width: 22px;

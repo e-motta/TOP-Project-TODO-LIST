@@ -2,10 +2,10 @@
 
 const addNavigation = () => {
     // * Temp
-    const saveChanges = () => console.log(`save nav`)
+    const newProject = () => console.log(`save nav`)
 
     const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, saveChanges)
+    saveBtn.addEventListener(`click`, newProject)
 }
 
 const updateContent = (project) => {
@@ -18,7 +18,6 @@ const updateContent = (project) => {
 
         project.name = projectInput.value
         project.description = descriptionInput.value
-        console.log(project)
     })
 }
 
