@@ -1,6 +1,6 @@
 import ProjectForm from './project-form.js'
 
-const component = ((projects) => {
+const component = (() => {
     const projectEditContent = document.createElement(`div`)
     projectEditContent.classList.add(`main-content`)
     projectEditContent.classList.add(`project-edit-content`)

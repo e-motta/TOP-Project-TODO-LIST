@@ -1,4 +1,4 @@
-const component = ((project, title, saveBtnName) => {
+const component = ((title, saveBtnName) => {
     const form = document.createElement(`form`)
     form.classList.add(`edit-form`)
     form.action = `#`

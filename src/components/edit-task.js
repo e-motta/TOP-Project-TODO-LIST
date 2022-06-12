@@ -1,6 +1,6 @@
 import TaskForm from './task-form.js'
 
-const component = ((projectName) => {
+const component = ((project) => {
     const taskEditContent = document.createElement(`div`)
     taskEditContent.classList.add(`main-content`)
     taskEditContent.classList.add(`task-edit-content`)
@@ -18,7 +18,7 @@ const component = ((projectName) => {
 
     backBtn.appendChild(span)
 
-    backBtn.appendChild(document.createTextNode(` ` + projectName))
+    backBtn.appendChild(document.createTextNode(` ` + project.name))
 
     mainHeader.appendChild(backBtn)
 

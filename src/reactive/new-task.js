@@ -46,6 +46,7 @@ const updateContent = (task) => {
 const react = (task) => {
     addResponsive()
     addNavigation()
+    displayContent()
     updateContent(task)
 }
 
