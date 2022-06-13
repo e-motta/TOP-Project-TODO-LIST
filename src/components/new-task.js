@@ -1,6 +1,6 @@
 import TaskForm from './task-form.js'
 
-const component = (() => {
+const component = ((project) => {
     const taskAddContent = document.createElement(`div`)
     taskAddContent.classList.add(`main-content`)
     taskAddContent.classList.add(`task-edit-content`)
@@ -10,6 +10,7 @@ const component = (() => {
 
     const backBtn = document.createElement(`button`)
     backBtn.classList.add(`btn`)
+    backBtn.setAttribute(`project-id`, project.id)
     backBtn.setAttribute(`type`, `button`)
     
     const span = document.createElement(`span`)

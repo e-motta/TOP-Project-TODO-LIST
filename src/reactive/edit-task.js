@@ -1,4 +1,4 @@
-// import navigation module
+import navigate from "../navigate.js"
 
 const addResponsive = () => {
     const priorityColor = document.querySelector(`.priority-color`)
@@ -16,6 +16,9 @@ const addResponsive = () => {
 const addNavigation = () => {
     // * Temp
     const saveChanges = () => console.log(`save nav`)
+
+    const backBtn = document.querySelector(`.main-header>.btn`)
+    backBtn.addEventListener(`click`, navigate.project)
 
     const saveBtn = document.querySelector(`.save-btn`)
     saveBtn.addEventListener(`click`, saveChanges)

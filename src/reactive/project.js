@@ -1,20 +1,13 @@
 import navigate from '../navigate.js'
 
 const addNavigation = () => {
-        // *** Temp
-        const navigateToAllProjects = () => console.log(`temp`)
-        const navigateToEditProject = () => console.log(`temp`)
-        const navigateToAddTask = () => console.log(`temp`)
-        const navigateToEditTask = () => console.log(`temp`)
-
-    
         // Project
         const allProjects = document.querySelector(`#back-all-projects`)
         allProjects.addEventListener(`click`, navigate.home)  // #
     
-        const editProjectBtn = document.querySelector(`#edit-project-btn`)
-        editProjectBtn.addEventListener(`click`, navigateToEditProject)  // #
-    
+        const editProjectBtn = document.querySelector(`.edit-project-btn`)
+        editProjectBtn.addEventListener(`click`, navigate.editProject)  // #
+
         const addTaskBtn = document.querySelector(`.add-task-btn`)
         addTaskBtn.addEventListener(`click`, navigate.newTask)  // #
 
@@ -25,7 +18,7 @@ const addNavigation = () => {
         }))
 
         const editTaskBtns = document.querySelectorAll(`.edit-task-btn`)
-        editTaskBtns.forEach((btn) => btn.addEventListener(`click`, navigateToEditTask))
+        editTaskBtns.forEach((btn) => btn.addEventListener(`click`, navigate.editTask))
 }
 
 const displayContent = (project) => {
@@ -54,8 +47,21 @@ const displayContent = (project) => {
 
 const updateContent = (project) => {
     // * Temp
-    const deleteTask = () => console.log(`delete`)
+    const deleteTask = () => console.log(`delete task`)
+    const deleteProject = () => console.log(`delete project`)
     
+    // Delete project
+    const confirmDeleteProject = e => {
+        const confirmed = confirm(`Are you sure you want to delete the project?`)
+        if (confirmed) {
+            deleteProject(e)
+            navigate.home(e)
+        }
+    }
+    const deleteProjectBtn = document.querySelector(`.delete-project-btn`)
+    deleteProjectBtn.addEventListener(`click`, confirmDeleteProject)
+
+
     //
     for (let i = 0; i < project.tasks.length; i++) {
         const task = project.tasks[i]
@@ -74,9 +80,15 @@ const updateContent = (project) => {
         })
         
         // Delete task
+        const confirmDeleteTask = e => {
+            const confirmed = confirm(`Are you sure you want to delete the task?`)
+            if (confirmed) {
+                deleteTask(e)
+                navigate.project(e)
+            }
+        }
         const deleteTaskBtn = document.querySelector(`#trash-task-btn-${i}`)
-        deleteTaskBtn.addEventListener(`click`, deleteTask)  // #
-        // navigate back to project
+        deleteTaskBtn.addEventListener(`click`, confirmDeleteTask)
     }
 }
 

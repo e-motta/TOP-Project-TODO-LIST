@@ -10,6 +10,7 @@ const component = ((project) => {
 
     const backBtn = document.createElement(`button`)
     backBtn.classList.add(`btn`)
+    backBtn.setAttribute(`project-id`, project.id)
     backBtn.setAttribute(`type`, `button`)
     
     const span = document.createElement(`span`)

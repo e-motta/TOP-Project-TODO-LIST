@@ -10,6 +10,7 @@ const component = ((project) => {
 
     const backButton = document.createElement(`button`)
     backButton.classList.add(`btn`)
+    backButton.setAttribute(`project-id`, project.id)
     backButton.setAttribute(`type`, `button`)
 
     const span = document.createElement(`span`)
@@ -18,7 +19,7 @@ const component = ((project) => {
 
     backButton.appendChild(span)
 
-    backButton.appendChild(document.createTextNode(` Personal`))  // *
+    backButton.appendChild(document.createTextNode(` ` + project.name))  // *
 
     mainHeader.appendChild(backButton)
 

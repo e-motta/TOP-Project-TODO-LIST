@@ -1,8 +1,11 @@
-// import navigation module
+import navigate from "../navigate.js"
 
 const addNavigation = () => {
     // * Temp
     const saveChanges = () => console.log(`save nav`)
+
+    const backBtn = document.querySelector(`.main-header>.btn`)
+    backBtn.addEventListener(`click`, navigate.project)
 
     const saveBtn = document.querySelector(`.save-btn`)
     saveBtn.addEventListener(`click`, saveChanges)

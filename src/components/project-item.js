@@ -52,7 +52,7 @@ const component = ((project) => {
     const openProjectBtn = document.createElement(`button`)
     openProjectBtn.classList.add(`btn`)
     openProjectBtn.classList.add(`project-btn`)
-    openProjectBtn.id = project.id
+    openProjectBtn.setAttribute(`project-id`, project.id)
     openProjectBtn.setAttribute(`type`, `button`)
     openProjectBtn.appendChild(document.createTextNode(`OPEN`))
 

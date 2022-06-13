@@ -34,11 +34,16 @@ const component = ((project) => {
 
     projectTitle.appendChild(sectionTitle)
 
+    const btnsContainer = document.createElement(`div`)
+    btnsContainer.classList.add(`project-btns-container`)
+
     const editBtn = document.createElement(`button`)
     editBtn.classList.add(`btn`)
     editBtn.classList.add(`edit-btn`)
-    editBtn.setAttribute(`id`, `edit-project-btn`)
+    editBtn.classList.add(`edit-project-btn`)
+    editBtn.setAttribute(`project-id`, project.id)
     editBtn.setAttribute(`type`, `button`)
+    editBtn.title = `Edit project`
 
     const spanEdit = document.createElement(`span`)
     spanEdit.classList.add(`iconify`)
@@ -47,7 +52,26 @@ const component = ((project) => {
 
     editBtn.appendChild(spanEdit)
 
-    projectTitle.appendChild(editBtn)
+    btnsContainer.appendChild(editBtn)
+
+    const deleteBtn = document.createElement(`button`)
+    deleteBtn.classList.add(`btn`)
+    deleteBtn.classList.add(`delete-btn`)
+    deleteBtn.classList.add(`delete-project-btn`)
+    deleteBtn.setAttribute(`project-id`, project.id)
+    deleteBtn.setAttribute(`type`, `button`)
+    deleteBtn.title = `Delete project`
+
+    const spanDelete = document.createElement(`span`)
+    spanDelete.classList.add(`iconify`)
+    spanDelete.setAttribute(`data-icon`, `mdi-trash`)
+    spanDelete.setAttribute(`title`, `Edit project`)
+
+    deleteBtn.appendChild(spanDelete)
+
+    btnsContainer.appendChild(deleteBtn)
+
+    projectTitle.appendChild(btnsContainer)
 
     mainHeader.appendChild(projectTitle)
 
@@ -55,7 +79,7 @@ const component = ((project) => {
 
     // Task component
     for (let i = 0; i < project.tasks.length; i++) {
-        const props = [project.tasks[i], i]
+        const props = [project, project.tasks[i], i]
         const task = Task(...props)
 
         projectContent.appendChild(task)  // **
@@ -65,7 +89,7 @@ const component = ((project) => {
     const addTaskBtn = document.createElement(`button`)
     addTaskBtn.classList.add(`btn`)
     addTaskBtn.classList.add(`add-task-btn`)
-    addTaskBtn.setAttribute(`id`, project.id)
+    addTaskBtn.setAttribute(`project-id`, project.id)
     addTaskBtn.setAttribute(`type`, `button`)
 
     const spanAdd = document.createElement(`span`)

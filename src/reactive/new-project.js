@@ -1,8 +1,11 @@
-// import navigation module
+import navigate from "../navigate.js"
 
 const addNavigation = () => {
     // * Temp
     const newProject = () => console.log(`save nav`)
+
+    const backBtn = document.querySelector(`.main-header>.btn`)
+    backBtn.addEventListener(`click`, navigate.home)
 
     const saveBtn = document.querySelector(`.save-btn`)
     saveBtn.addEventListener(`click`, newProject)
@@ -15,9 +18,6 @@ const updateContent = (project) => {
     const saveBtn = document.querySelector(`.save-btn`)
     saveBtn.addEventListener(`click`, e => {  // use project module methods?
         e.preventDefault()
-
-        project.name = projectInput.value
-        project.description = descriptionInput.value
     })
 }
 

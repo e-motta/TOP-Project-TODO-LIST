@@ -34,32 +34,30 @@ const navigate = ((projects) => {
     }
 
     const home = () => {
-        const props = [projects]
-
         const main = document.querySelector(`.main`)
-        main.replaceChildren(AllProjects(...props))
+        main.replaceChildren(AllProjects(projects))
 
-        reactAllProjects(...props)
+        reactAllProjects(projects)
     }
 
     const project = e => {
-        const project = projects.find(p => p.id.toString() === e.target.id)
-        const props = [project]
+        const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
 
         const main = document.querySelector(`.main`)
-        main.replaceChildren(Project(...props))
+        main.replaceChildren(Project(project))
 
-        reactProject(...props)
+        reactProject(project)
     }
 
-    const newProject = () => {
+    const newProject = e => {
         const main = document.querySelector(`.main`)
         main.replaceChildren(NewProject())
 
         reactNewProject()
     }
 
-    const editProject = (project) => {
+    const editProject = e => {
+        const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
         const main = document.querySelector(`.main`)
         main.replaceChildren(EditProject(project))
 
@@ -67,16 +65,18 @@ const navigate = ((projects) => {
     }
 
     const newTask = e => {
+        const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
+        
         const main = document.querySelector(`.main`)
-        main.replaceChildren(NewTask())
-        console.log(e.target)
+        main.replaceChildren(NewTask(project))
 
-        const project = projects.find(p => p.id.toString() === e.target.id)
-        console.log(project)
         reactNewTask(project)
     }
 
-    const editTask = (project, task) => {
+    const editTask = e => {
+        const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
+        const task = project.tasks.find(t => t.id.toString() === e.target.getAttribute(`task-id`))
+
         const main = document.querySelector(`.main`)
         main.replaceChildren(EditTask(project))
 

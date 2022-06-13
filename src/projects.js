@@ -7,9 +7,12 @@ const projects = [
         description: `This is a new description`,
         tasks: [
             {
+                id: 0,
                 name: `Do the dishes`,
                 dueDate: `2022-12-22`,
-                description: `Personal description`
+                description: `Personal description`,
+                priority: `medium`,
+                done: true,
             },
         ]
     },
@@ -21,6 +24,7 @@ const projects = [
         description: `This is a work project description`,
         tasks: [
             {
+                id: 0,
                 name: `File suit`,
                 dueDate: `2021-11-11`,
                 description: `Description`,
@@ -28,6 +32,7 @@ const projects = [
                 done: true,
             },
             {
+                id: 1,
                 name: `Read papers`,
                 dueDate: `2021-06-18`,
                 description: ``,

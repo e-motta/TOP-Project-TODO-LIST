@@ -30,7 +30,7 @@ const component = ((projects) => {
 
         const a = document.createElement(`a`)
         a.classList.add(`menu-link`)
-        a.id = project.id
+        a.setAttribute(`project-id`, project.id)
         a.innerText = project.name
 
         li.appendChild(a)

@@ -1,4 +1,4 @@
-const component = ((task, i) => {
+const component = ((project, task, i) => {
     const taskContainer = document.createElement(`div`)
     taskContainer.classList.add(`task-container`)
 
@@ -19,10 +19,28 @@ const component = ((task, i) => {
 
     taskTitle.appendChild(checkbox)
 
+    const months = {
+        '01': `Jan`,
+        '02': `Feb`,
+        '03': `Mar`,
+        '04': `Apr`,
+        '05': `May`,
+        '06': `Jun`,
+        '07': `Jul`,
+        '08': `Aug`,
+        '09': `Sep`,
+        '10': `Oct`,
+        '11': `Nov`,
+        '12': `Dec`
+    }
+
     const dueDate = document.createElement(`div`)
     dueDate.setAttribute(`id`, `due-date-${i}`)
     dueDate.classList.add(`due-date`)
-    dueDate.appendChild(document.createTextNode(task.dueDate))  // *
+    const date = months[task.dueDate.slice(5,7)]
+        + ` ` + task.dueDate.slice(8,10) 
+        + `, ` + task.dueDate.slice(0,4)
+    dueDate.appendChild(document.createTextNode(date))  // *
 
     taskTitle.appendChild(dueDate)
 
@@ -46,6 +64,8 @@ const component = ((task, i) => {
             btn.classList.add(`${btnName[0]}-task-btn`)
         }
         btn.setAttribute(`id`, `${btnName[0]}-task-btn-${i}`)
+        btn.setAttribute(`project-id`, project.id)
+        btn.setAttribute(`task-id`, i)
         btn.setAttribute(`type`, `button`)
         btn.setAttribute(`title`, btnName[1])
         
