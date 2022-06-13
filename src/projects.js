@@ -1,3 +1,41 @@
+
+const addNewProject = (name, description) => {
+    p = {
+        id: projects.length >= 1 ? projects[projects.length - 1].id + 1 : 0,
+        name: name,
+        pending: 0,
+        completed: 0,
+        description: description,
+        tasks: []
+    }
+    projects.push(p)
+}
+
+const deleteProject = projectId => {
+    projects = projects.filter(p => p.id !== projectId)
+}
+
+const addNewTask = (projectId, name, dueDate, description, priority) => {
+    p = projects.find(p => p.id === projectId)
+    
+    t = {
+        id: p.tasks.length >= 1 ? p.tasks[p.tasks.length - 1].id + 1 : 0,
+        name: name,
+        dueDate: dueDate,
+        description: description,
+        priority: priority,
+        done: false
+    }
+
+    p.tasks.push(t)
+}
+
+const deleteTask = (projectId, taskId) => {
+    p = projects.find(p => p.id === projectId)
+
+    p.tasks = p.tasks.filter(t => t.id !== taskId)
+}
+
 const projects = [
     {
         id: 0,
