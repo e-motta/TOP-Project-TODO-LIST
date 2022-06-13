@@ -1,26 +1,25 @@
-import Header from './components/header.js'
-import Sidebar from './components/sidebar.js'
-import AllProjects from './components/all-projects.js'
-import Project from './components/project.js'
-import NewProject from './components/new-project.js'
-import EditProject from './components/edit-project.js'
-import NewTask from './components/new-task.js'
-import EditTask from './components/edit-task.js'
+import Header from './components/header'
+import Sidebar from './components/sidebar'
+import AllProjects from './components/all-projects'
+import Project from './components/project'
+import NewProject from './components/new-project'
+import EditProject from './components/edit-project'
+import NewTask from './components/new-task'
+import EditTask from './components/edit-task'
 
-import reactSidebar from './reactive/sidebar.js'
-import reactAllProjects from './reactive/all-projects.js'
-import reactProject from './reactive/project.js'
-import reactNewProject from './reactive/new-project.js'
-import reactEditProject from './reactive/edit-project.js'
-import reactNewTask from './reactive/new-task.js'
-import reactEditTask from './reactive/edit-task.js'
+import reactSidebar from './reactive/sidebar'
+import reactAllProjects from './reactive/all-projects'
+import reactProject from './reactive/project'
+import reactNewProject from './reactive/new-project'
+import reactEditProject from './reactive/edit-project'
+import reactNewTask from './reactive/new-task'
+import reactEditTask from './reactive/edit-task'
 
-import projectsModule from './projects.js'
+import projectsModule from './projects'
 
 const projects = projectsModule.projects
-console.log(projects)
 
-const navigate = ((projects) => {
+const navigate = (() => {
     const initialLoad = () => {
         const content = document.querySelector(`.content`)
     
@@ -44,6 +43,7 @@ const navigate = ((projects) => {
     }
 
     const project = e => {
+        console.log(e)
         const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
 
         const main = document.querySelector(`.main`)
@@ -95,6 +95,6 @@ const navigate = ((projects) => {
         newTask,
         editTask
     }
-})(projects);
+})();
 
 export default navigate

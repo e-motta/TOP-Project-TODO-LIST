@@ -1,20 +1,12 @@
 import navigate from "../navigate"
 import projectsModule from "../projects"
 
-const projects = projectsModule.projects
-
 const addNavigation = () => {
-    // * Temp
-    const newProject = () => console.log(`save nav`)
-
     const backBtn = document.querySelector(`.main-header>.btn`)
     backBtn.addEventListener(`click`, navigate.home)
-
-    const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, newProject)
 }
 
-const updateContent = (project) => {
+const updateContent = () => {
     const projectInput = document.querySelector(`#title`)
     const descriptionInput = document.querySelector(`#description`)
 
@@ -23,16 +15,18 @@ const updateContent = (project) => {
         e.preventDefault()
 
         const newProjectId = projectsModule.addNewProject(projectInput.value, descriptionInput.value)
-        console.log(newProjectId)
 
-        const newProject = projects.find(p => p.id === newProjectId) /////////////////////
-        navigate.project(newProject)
+        // create mock element to call navigate method with click event
+        const mockElement = document.createElement(`a`)
+        mockElement.setAttribute(`project-id`, newProjectId)
+        mockElement.addEventListener(`click`, navigate.project)
+        mockElement.click()
     })
 }
 
-const react = (project) => {
+const react = () => {
     addNavigation()
-    updateContent(project)
+    updateContent()
 }
 
 export default react
