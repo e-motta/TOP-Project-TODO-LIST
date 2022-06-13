@@ -1,9 +1,9 @@
 import './reset.css';
 import './style.css';
 
-import navigate from './navigate.js'
+import navigate from './navigate'
 
-import projects from './projects.js'
+import projects from './projects'
 
 
 navigate.initialLoad()

@@ -1,4 +1,4 @@
-import navigate from '../navigate.js'
+import navigate from '../navigate'
 
 const addNavigation = () => {
     const openProjectBtns = document.querySelectorAll(`.project-btn`)

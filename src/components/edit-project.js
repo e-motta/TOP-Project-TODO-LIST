@@ -1,4 +1,4 @@
-import ProjectForm from './project-form.js'
+import ProjectForm from './project-form'
 
 const component = ((project) => {
     const projectEditContent = document.createElement(`div`)

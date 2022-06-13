@@ -1,4 +1,4 @@
-import Project from './project-item.js'
+import Project from './project-item'
 
 const component = ((projects) => {
     const allProjects = document.createElement(`div`)

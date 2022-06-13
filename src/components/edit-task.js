@@ -1,4 +1,4 @@
-import TaskForm from './task-form.js'
+import TaskForm from './task-form'
 
 const component = ((project) => {
     const taskEditContent = document.createElement(`div`)

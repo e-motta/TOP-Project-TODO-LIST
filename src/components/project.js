@@ -1,4 +1,4 @@
-import Task from './task-item.js'
+import Task from './task-item'
 
 const component = ((project) => {
     // Project content

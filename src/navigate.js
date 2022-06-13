@@ -15,7 +15,10 @@ import reactEditProject from './reactive/edit-project.js'
 import reactNewTask from './reactive/new-task.js'
 import reactEditTask from './reactive/edit-task.js'
 
-import projects from './projects.js'
+import projectsModule from './projects.js'
+
+const projects = projectsModule.projects
+console.log(projects)
 
 const navigate = ((projects) => {
     const initialLoad = () => {

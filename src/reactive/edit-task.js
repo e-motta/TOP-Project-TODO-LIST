@@ -1,4 +1,4 @@
-import navigate from "../navigate.js"
+import navigate from "../navigate"
 
 const addResponsive = () => {
     const priorityColor = document.querySelector(`.priority-color`)

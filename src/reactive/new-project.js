@@ -1,4 +1,7 @@
-import navigate from "../navigate.js"
+import navigate from "../navigate"
+import projectsModule from "../projects"
+
+const projects = projectsModule.projects
 
 const addNavigation = () => {
     // * Temp
@@ -16,8 +19,14 @@ const updateContent = (project) => {
     const descriptionInput = document.querySelector(`#description`)
 
     const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, e => {  // use project module methods?
+    saveBtn.addEventListener(`click`, e => {
         e.preventDefault()
+
+        const newProjectId = projectsModule.addNewProject(projectInput.value, descriptionInput.value)
+        console.log(newProjectId)
+
+        const newProject = projects.find(p => p.id === newProjectId) /////////////////////
+        navigate.project(newProject)
     })
 }
 
