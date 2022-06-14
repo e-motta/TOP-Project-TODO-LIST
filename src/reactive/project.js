@@ -74,7 +74,6 @@ const updateContent = (project) => {
             } else {
                 task.done = false
             }
-            console.log(project.tasks)
 
             displayContent(project)
         })

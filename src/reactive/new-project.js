@@ -12,15 +12,23 @@ const updateContent = () => {
 
     const saveBtn = document.querySelector(`.save-btn`)
     saveBtn.addEventListener(`click`, e => {
-        e.preventDefault()
+        const form = document.querySelector(`form`)
+        const isFormValid = form.checkValidity()
+        if (!isFormValid) {
+            form.reportValidity()
+        } else {
+            e.preventDefault()
 
-        const newProjectId = projectsModule.addNewProject(projectInput.value, descriptionInput.value)
-
-        // create mock element to call navigate method with click event
-        const mockElement = document.createElement(`a`)
-        mockElement.setAttribute(`project-id`, newProjectId)
-        mockElement.addEventListener(`click`, navigate.project)
-        mockElement.click()
+            const newProjectId = projectsModule.addNewProject(projectInput.value, descriptionInput.value)
+    
+            // create mock element to call navigate method with click event
+            const mockElement = document.createElement(`a`)
+            mockElement.setAttribute(`project-id`, newProjectId)
+            mockElement.addEventListener(`click`, navigate.project)
+            mockElement.click()
+    
+            navigate.reloadSidebar()
+        }
     })
 }
 

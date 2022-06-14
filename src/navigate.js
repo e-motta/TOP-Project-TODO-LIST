@@ -35,6 +35,16 @@ const navigate = (() => {
         home(projects)
     }
 
+    const reloadSidebar = () => {
+        const content = document.querySelector(`.content`)
+        const newSidebar = Sidebar(projects)
+        const oldSidebar = document.querySelector(`.sidebar`)
+
+        content.replaceChild(newSidebar, oldSidebar)
+
+        reactSidebar()
+    }
+
     const home = () => {
         const main = document.querySelector(`.main`)
         main.replaceChildren(AllProjects(projects))
@@ -43,7 +53,6 @@ const navigate = (() => {
     }
 
     const project = e => {
-        console.log(e)
         const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
 
         const main = document.querySelector(`.main`)
@@ -88,6 +97,7 @@ const navigate = (() => {
 
     return {
         initialLoad,
+        reloadSidebar,
         home,
         project,
         newProject,

@@ -29,7 +29,6 @@ const updateContent = (project) => {
 
         project.name = projectInput.value
         project.description = descriptionInput.value
-        console.log(project)
     })
 }
 
