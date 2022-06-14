@@ -1,4 +1,5 @@
 import navigate from "../navigate"
+import projectsModule from '../projects'
 
 const addResponsive = () => {
     const priorityColor = document.querySelector(`.priority-color`)
@@ -14,14 +15,8 @@ const addResponsive = () => {
 }
 
 const addNavigation = () => {
-    // * Temp
-    const newTask = () => console.log(`save nav`)
-
     const backBtn = document.querySelector(`.main-header>.btn`)
     backBtn.addEventListener(`click`, navigate.project)
-
-    const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, newTask)
 }
 
 const displayContent = (project) => {
@@ -32,20 +27,36 @@ const displayContent = (project) => {
     priorityColor.classList.add(`low`)
 }
 
-const updateContent = (project) => {
+const updateContent = () => {
     const taskInput = document.querySelector(`#title`)
     const descriptionInput = document.querySelector(`#description`)
     const dueDate = document.querySelector(`#due-date`)
     const priority = document.querySelector(`#priority`)
 
     const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, e => {  // use project module methods?
-        e.preventDefault()
+    saveBtn.addEventListener(`click`, e => {
+        const form = document.querySelector(`form`)
+        const isFormValid = form.checkValidity()
+        if (!isFormValid) {
+            form.reportValidity()
+        } else {
+            e.preventDefault()
 
-        // task.name = taskInput.value
-        // task.description = descriptionInput.value
-        // task.dueDate = dueDate.value
-        // task.priority = priority.value
+            const projectId = e.target.getAttribute(`project-id`)
+            projectsModule.addNewTask(
+                projectId,
+                taskInput.value,
+                dueDate.value,
+                descriptionInput.value,
+                priority.value
+                )
+
+            // create mock element to call navigate method with click event
+            const mockElement = document.createElement(`a`)
+            mockElement.setAttribute(`project-id`, projectId)
+            mockElement.addEventListener(`click`, navigate.project)
+            mockElement.click()
+        }
     })
 }
 
@@ -53,7 +64,7 @@ const react = (project) => {
     addResponsive()
     addNavigation()
     displayContent(project)
-    updateContent(project)
+    updateContent()
 }
 
 export default react

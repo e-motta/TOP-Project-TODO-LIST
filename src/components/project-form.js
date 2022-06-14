@@ -1,4 +1,4 @@
-const component = ((title, saveBtnName) => {
+const component = ((title, saveBtnName, project=null) => {
     const form = document.createElement(`form`)
     form.classList.add(`edit-form`)
     form.action = `#`
@@ -46,6 +46,8 @@ const component = ((title, saveBtnName) => {
     saveBtn.classList.add(`btn`)
     saveBtn.classList.add(`add-task-btn`)
     saveBtn.classList.add(`save-btn`)
+    console.log(project)
+    if (project !== null) saveBtn.setAttribute(`project-id`, project.id)
     saveBtn.type = `submit`
     saveBtn.appendChild(document.createTextNode(saveBtnName))
 

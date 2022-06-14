@@ -1,4 +1,4 @@
-const component = ((legendName, saveBtnName) => {
+const component = ((legendName, saveBtnName, project, task=null) => {
     const form = document.createElement(`form`)
     form.classList.add(`edit-form`)
     form.action = `#`
@@ -49,6 +49,7 @@ const component = ((legendName, saveBtnName) => {
     const dueDateInput = document.createElement(`input`)
     dueDateInput.classList.add(`input`)
     dueDateInput.id = `due-date`
+    dueDateInput.setAttribute(`required`, `required`)
     dueDateInput.setAttribute(`type`, `date`)  // *
 
     fieldset.appendChild(dueDateInput)
@@ -99,6 +100,8 @@ const component = ((legendName, saveBtnName) => {
     saveBtn.classList.add(`btn`)
     saveBtn.classList.add(`add-task-btn`)
     saveBtn.classList.add(`save-btn`)
+    saveBtn.setAttribute(`project-id`, project.id)
+    if (task !== null) saveBtn.setAttribute(`task-id`, task.id)
     saveBtn.type = `submit`
     saveBtn.appendChild(document.createTextNode(saveBtnName))
 

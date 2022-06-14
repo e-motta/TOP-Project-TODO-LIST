@@ -28,7 +28,7 @@ const component = ((project) => {
     const title = `Edit project details`
     const saveBtnName = `Save changes`
 
-    projectEditContent.appendChild(ProjectForm(title, saveBtnName))
+    projectEditContent.appendChild(ProjectForm(title, saveBtnName, project))
 
     return projectEditContent
 });

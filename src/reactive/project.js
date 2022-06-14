@@ -1,7 +1,7 @@
 import navigate from '../navigate'
+import projectsModule from "../projects"
 
 const addNavigation = () => {
-        // Project
         const allProjects = document.querySelector(`#back-all-projects`)
         allProjects.addEventListener(`click`, navigate.home)  // #
     
@@ -22,7 +22,6 @@ const addNavigation = () => {
 }
 
 const displayContent = (project) => {
-    // Tasks
     for (let i = 0; i < project.tasks.length; i++) {
         const task = project.tasks[i]
 
@@ -46,21 +45,17 @@ const displayContent = (project) => {
 }
 
 const updateContent = (project) => {
-    // * Temp
-    const deleteTask = () => console.log(`delete task`)
-    const deleteProject = () => console.log(`delete project`)
-    
     // Delete project
     const confirmDeleteProject = e => {
         const confirmed = confirm(`Are you sure you want to delete the project?`)
         if (confirmed) {
-            deleteProject(e)
-            navigate.home(e)
+            projectsModule.deleteProject(e.target.getAttribute(`project-id`))
+            navigate.home()
+            navigate.reloadSidebar()
         }
     }
     const deleteProjectBtn = document.querySelector(`.delete-project-btn`)
     deleteProjectBtn.addEventListener(`click`, confirmDeleteProject)
-
 
     //
     for (let i = 0; i < project.tasks.length; i++) {
@@ -82,7 +77,10 @@ const updateContent = (project) => {
         const confirmDeleteTask = e => {
             const confirmed = confirm(`Are you sure you want to delete the task?`)
             if (confirmed) {
-                deleteTask(e)
+                projectsModule.deleteTask(
+                    e.target.getAttribute(`project-id`),
+                    e.target.getAttribute(`task-id`)
+                    )
                 navigate.project(e)
             }
         }

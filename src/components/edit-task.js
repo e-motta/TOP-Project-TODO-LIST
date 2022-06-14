@@ -1,6 +1,6 @@
 import TaskForm from './task-form'
 
-const component = ((project) => {
+const component = ((project, task) => {
     const taskEditContent = document.createElement(`div`)
     taskEditContent.classList.add(`main-content`)
     taskEditContent.classList.add(`task-edit-content`)
@@ -28,7 +28,7 @@ const component = ((project) => {
     const legendName = `Edit task details`
     const saveBtnName = `Save changes`
 
-    taskEditContent.appendChild(TaskForm(legendName, saveBtnName))
+    taskEditContent.appendChild(TaskForm(legendName, saveBtnName, project, task))
 
     return taskEditContent
 });

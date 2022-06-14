@@ -1,14 +1,9 @@
 import navigate from "../navigate"
+import projectsModule from "../projects"
 
 const addNavigation = () => {
-    // * Temp
-    const saveChanges = () => console.log(`save nav`)
-
     const backBtn = document.querySelector(`.main-header>.btn`)
     backBtn.addEventListener(`click`, navigate.project)
-
-    const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, saveChanges)
 }
 
 const displayContent = (project) => {
@@ -24,11 +19,29 @@ const updateContent = (project) => {
     const descriptionInput = document.querySelector(`#description`)
 
     const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, e => {  // use project module methods?
-        e.preventDefault()
+    saveBtn.addEventListener(`click`, e => {
+        const form = document.querySelector(`form`)
+        const isFormValid = form.checkValidity()
+        if (!isFormValid) {
+            form.reportValidity()
+        } else {
+            e.preventDefault()
 
-        project.name = projectInput.value
-        project.description = descriptionInput.value
+            const projectId = e.target.getAttribute(`project-id`)
+            projectsModule.editProject(
+                projectId, 
+                projectInput.value, 
+                descriptionInput.value
+                )
+    
+            // create mock element to call navigate method with click event
+            const mockElement = document.createElement(`a`)
+            mockElement.setAttribute(`project-id`, projectId)
+            mockElement.addEventListener(`click`, navigate.project)
+            mockElement.click()
+    
+            navigate.reloadSidebar()
+        }
     })
 }
 

@@ -1,5 +1,5 @@
 const module = (() => {
-    const projects = [
+    let projects = [
         {
             id: 0,
             name: `Personal`,
@@ -57,13 +57,20 @@ const module = (() => {
 
         return p.id
     }
+
+    const editProject = (projectId, newName, newDescription) => {
+        const project = projects.find(p => p.id.toString() === projectId)
+        project.name = newName
+        project.description = newDescription
+    }
     
     const deleteProject = projectId => {
-        projects = projects.filter(p => p.id !== projectId)
+        // filter in place
+        projects.splice(0, projects.length, ...projects.filter(p => p.id.toString() !== projectId))
     }
     
     const addNewTask = (projectId, name, dueDate, description, priority) => {
-        const p = projects.find(p => p.id === projectId)
+        const p = projects.find(p => p.id.toString() === projectId)
         
         const t = {
             id: p.tasks.length >= 1 ? p.tasks[p.tasks.length - 1].id + 1 : 0,
@@ -76,14 +83,31 @@ const module = (() => {
     
         p.tasks.push(t)
     }
+
+    const editTask = (projectId, taskId, newName, newDueDate, newDescription, newPriority) => {
+        const p = projects.find(p => p.id.toString() === projectId)
+        const t = p.tasks.find(t => t.id.toString() === taskId)
+
+        t.name = newName
+        t.dueDate = newDueDate
+        t.description = newDescription
+        t.priority = newPriority
+    }
     
     const deleteTask = (projectId, taskId) => {
-        const p = projects.find(p => p.id === projectId)
-    
-        p.tasks = p.tasks.filter(t => t.id !== taskId)
+        const p = projects.find(p => p.id.toString() === projectId)
+        p.tasks = p.tasks.filter(t => t.id.toString() !== taskId)
     }
 
-    return { projects, addNewProject, deleteProject, addNewTask, deleteTask }
+    return {
+        projects,
+        addNewProject,
+        editProject,
+        deleteProject,
+        addNewTask,
+        editTask,
+        deleteTask
+    }
 })();
 
 export default module

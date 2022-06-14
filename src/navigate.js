@@ -32,7 +32,7 @@ const navigate = (() => {
         main.classList.add(`main`)
         content.appendChild(main)
 
-        home(projects)
+        home()
     }
 
     const reloadSidebar = () => {
@@ -78,7 +78,7 @@ const navigate = (() => {
 
     const newTask = e => {
         const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
-        
+
         const main = document.querySelector(`.main`)
         main.replaceChildren(NewTask(project))
 
@@ -90,7 +90,7 @@ const navigate = (() => {
         const task = project.tasks.find(t => t.id.toString() === e.target.getAttribute(`task-id`))
 
         const main = document.querySelector(`.main`)
-        main.replaceChildren(EditTask(project))
+        main.replaceChildren(EditTask(project, task))
 
         reactEditTask(task)
     }

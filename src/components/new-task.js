@@ -26,7 +26,7 @@ const component = ((project) => {
     const legendName = `New task details`
     const saveBtnName = `Add task`
 
-    taskAddContent.appendChild(TaskForm(legendName, saveBtnName))
+    taskAddContent.appendChild(TaskForm(legendName, saveBtnName, project))
 
     return taskAddContent
 });
