@@ -1,73 +1,7 @@
+import projectsJson from './projects.json'
+
 const module = (() => {
-    let projects = [
-        {
-            id: 0,
-            name: `Tutorial 1 - Projects`,
-            pending: 1,
-            completed: 1,
-            description: `This is an example project. Open it and expand the tasks to see some tips.`,
-            tasks: [
-                {
-                    id: 0,
-                    name: `Open projects`,
-                    dueDate: `2020-11-11`,
-                    description: `To open projects, you can click either the "OPEN" button in the home page cards, or the menu items in the sidebar.`,
-                    priority: `low`,
-                    done: false,
-                },
-                {
-                    id: 1,
-                    name: `Change projects`,
-                    dueDate: `2021-11-11`,
-                    description: `You can edit or delete projects by clicking the pencil or trash icons in the upper right corner.`,
-                    priority: `low`,
-                    done: false,
-                },
-                {
-                    id: 2,
-                    name: `Add projects`,
-                    dueDate: `2021-06-18`,
-                    description: `Adding projects is as easy as clicking the "+ ADD PROJECT" button in the sidebar`,
-                    priority: `high`,
-                    done: false,
-                },
-            ]
-        },
-        {
-            id: 1,
-            name: `Tutorial 2 - Tasks`,
-            pending: 0,
-            completed: 1,
-            description: `In the home page card, descriptions occupy a maximum of 2 lines. You can hover over the description or open the project to see the full description when they are too long.`,
-            tasks: [
-                {
-                    id: 0,
-                    name: `Low priority task`,
-                    dueDate: `2022-06-22`,
-                    description: `This is a low priority task, as indicated by the color green to the left. You can edit it by clicking the task pencil icon.`,
-                    priority: `low`,
-                    done: false,
-                },
-                {
-                    id: 1,
-                    name: `Done task`,
-                    dueDate: `2022-12-25`,
-                    description: `This task is already done, as indicated by the checkbox and striked text. You can uncheck it to mark it as undone.`,
-                    priority: `high`,
-                    done: true,
-                },
-                {
-                    id: 2,
-                    name: `Superfluous task`,
-                    dueDate: `2022-12-30`,
-                    description: `You can delete tasks by clicking the task trash icon. You can also add tasks by clicking the "+ ADD TASK" button below.`,
-                    priority: `medium`,
-                    done: true,
-                },
-            ]
-        },
-        
-    ]
+    let projects = projectsJson
     
     const updatePending = (project) => {
         const updatedPending = project.tasks.reduce((total, task) => {
