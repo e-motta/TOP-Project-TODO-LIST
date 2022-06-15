@@ -22,15 +22,13 @@ const addNavigation = () => {
 }
 
 const displayContent = (project) => {
-    for (let i = 0; i < project.tasks.length; i++) {
-        const task = project.tasks[i]
+    project.tasks.forEach((t) => {
+        const checkbox = document.querySelector(`#check-${t.id}`)
+        const taskTitle = document.querySelector(`#task-title-${t.id}`)
+        const dueDate = document.querySelector(`#due-date-${t.id}`)
+        const taskName = document.querySelector(`#task-name-${t.id}`)
 
-        const checkbox = document.querySelector(`#check-${i}`)
-        const taskTitle = document.querySelector(`#task-title-${i}`)
-        const dueDate = document.querySelector(`#due-date-${i}`)
-        const taskName = document.querySelector(`#task-name-${i}`)
-
-        if (task.done) {
+        if (t.done) {
             checkbox.setAttribute(`checked`, `checked`)
             taskTitle.classList.add(`task-title-done`)
             dueDate.classList.add(`due-date-done`)
@@ -41,10 +39,11 @@ const displayContent = (project) => {
             dueDate.classList.remove(`due-date-done`)
             taskName.classList.remove(`done`)
         }
-    }
+    })
 }
 
 const updateContent = (project) => {
+    // Project
     // Delete project
     const confirmDeleteProject = e => {
         const confirmed = confirm(`Are you sure you want to delete the project?`)
@@ -57,14 +56,13 @@ const updateContent = (project) => {
     const deleteProjectBtn = document.querySelector(`.delete-project-btn`)
     deleteProjectBtn.addEventListener(`click`, confirmDeleteProject)
 
-    //
-    project.tasks.forEach((task, i) => {
+    // Tasks
+    project.tasks.forEach((task) => {
         // Task is done/undone
-        const checkbox = document.querySelector(`#check-${i}`)
+        const checkbox = document.querySelector(`#check-${task.id}`)
         checkbox.addEventListener(`change`, function() {
             const done = this.checked
-            projectsModule.toggleDoneTask(task, done)
-            projectsModule.updateTasksStats(project)
+            projectsModule.toggleDoneTask(project, task, done)
             displayContent(project)
         })
         
@@ -76,11 +74,10 @@ const updateContent = (project) => {
                     e.target.getAttribute(`project-id`),
                     e.target.getAttribute(`task-id`)
                     )
-                console.log(projectsModule.projects)
                 navigate.project(e)
             }
         }
-        const deleteTaskBtn = document.querySelector(`#trash-task-btn-${i}`)
+        const deleteTaskBtn = document.querySelector(`#trash-task-btn-${task.id}`)
         deleteTaskBtn.addEventListener(`click`, confirmDeleteTask)
     })
 }

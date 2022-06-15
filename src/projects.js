@@ -67,12 +67,14 @@ const module = (() => {
         updateCompleted(project)
     }
 
-    const toggleDoneTask = (task) => {
-        if (!task.done) {
+    const toggleDoneTask = (project, task, done) => {
+        if (done) {
             task.done = true
         } else {
             task.done = false
         }
+
+        updateTasksStats(project)
     }
 
     const addNewProject = (name, description) => {
@@ -134,7 +136,6 @@ const module = (() => {
 
     return {
         projects,
-        updateTasksStats,
         toggleDoneTask,
         addNewProject,
         editProject,

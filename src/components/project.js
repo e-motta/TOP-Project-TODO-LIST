@@ -78,12 +78,11 @@ const component = ((project) => {
     projectContent.appendChild(mainHeader)
 
     // Task component
-    for (let i = 0; i < project.tasks.length; i++) {
-        const props = [project, project.tasks[i], i]
-        const task = Task(...props)
+    project.tasks.forEach((t) => {
+        const task = Task(project, t, t.id)
 
         projectContent.appendChild(task)  // **
-    }
+    })
 
     // Add task button
     const addTaskBtn = document.createElement(`button`)
