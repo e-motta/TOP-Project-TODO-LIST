@@ -1,7 +1,24 @@
 import projectsJson from './projects.json'
 
+const manageLocalStorage = (() => {
+    const load = () => {
+        if (localStorage.getItem('projects') === null) {
+            return projectsJson
+        }
+
+        const projectsJsonString = localStorage.getItem('projects')
+        return JSON.parse(projectsJsonString)
+    }
+
+    const saveProjects = (projects) => {
+        localStorage.setItem('projects', JSON.stringify(projects))
+    }
+
+    return { load, saveProjects }
+})();
+
 const module = (() => {
-    let projects = projectsJson
+    let projects = manageLocalStorage.load()
     
     const updatePending = (project) => {
         const updatedPending = project.tasks.reduce((total, task) => {
@@ -34,6 +51,7 @@ const module = (() => {
         }
 
         updateTasksStats(project)
+        manageLocalStorage.saveProjects(projects)
     }
 
     const addNewProject = (name, description) => {
@@ -47,6 +65,8 @@ const module = (() => {
         }
         projects.push(p)
 
+        manageLocalStorage.saveProjects(projects)
+
         return p.id
     }
 
@@ -54,11 +74,13 @@ const module = (() => {
         const project = projects.find(p => p.id.toString() === projectId)
         project.name = newName
         project.description = newDescription
+        manageLocalStorage.saveProjects(projects)
     }
     
     const deleteProject = projectId => {
         // filter in place
         projects.splice(0, projects.length, ...projects.filter(p => p.id.toString() !== projectId))
+        manageLocalStorage.saveProjects(projects)
     }
     
     const addNewTask = (projectId, name, dueDate, description, priority) => {
@@ -75,6 +97,7 @@ const module = (() => {
     
         p.tasks.push(t)
         updateTasksStats(p)
+        manageLocalStorage.saveProjects(projects)
     }
 
     const editTask = (projectId, taskId, newName, newDueDate, newDescription, newPriority) => {
@@ -85,12 +108,15 @@ const module = (() => {
         t.dueDate = newDueDate
         t.description = newDescription
         t.priority = newPriority
+
+        manageLocalStorage.saveProjects(projects)
     }
     
     const deleteTask = (projectId, taskId) => {
         const p = projects.find(p => p.id.toString() === projectId)
         p.tasks = p.tasks.filter(t => t.id.toString() !== taskId)
         updateTasksStats(p)
+        manageLocalStorage.saveProjects(projects)
     }
 
     return {
