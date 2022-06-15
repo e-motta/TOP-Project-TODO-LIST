@@ -21,7 +21,7 @@ const component = ((project) => {
 
     backBtn.appendChild(spanArrowLeft)
 
-    backBtn.appendChild(document.createTextNode(` All Projects`))
+    backBtn.appendChild(document.createTextNode(` Your projects`))
 
     mainHeader.appendChild(backBtn)
 
@@ -74,6 +74,11 @@ const component = ((project) => {
     projectTitle.appendChild(btnsContainer)
 
     mainHeader.appendChild(projectTitle)
+
+    const description = document.createElement(`p`)
+    description.classList.add(`project-description`)
+    description.textContent = project.description
+    mainHeader.appendChild(description)
 
     projectContent.appendChild(mainHeader)
 

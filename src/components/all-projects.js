@@ -6,7 +6,7 @@ const component = ((projects) => {
 
     const sectionTitle = document.createElement(`div`)
     sectionTitle.classList.add(`section-title`)
-    sectionTitle.appendChild(document.createTextNode(`All Projects`))
+    sectionTitle.appendChild(document.createTextNode(`Your projects`))
 
     allProjects.appendChild(sectionTitle)
 
