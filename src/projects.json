@@ -37,7 +37,7 @@
         "name": "Tutorial 2 - Tasks",
         "pending": 1,
         "completed": 2,
-        "description": "In the home page card, descriptions occupy a maximum of 2 lines. You can hover over the description or open the project to see the full description when they are too long.",
+        "description": "In the home page card, descriptions occupy a maximum of 2 lines. You can hover over the description or open the project to see the full description when it is too long.",
         "tasks": [
             {
                 "id": 0,
