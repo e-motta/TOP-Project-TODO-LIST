@@ -58,18 +58,13 @@ const updateContent = (project) => {
     deleteProjectBtn.addEventListener(`click`, confirmDeleteProject)
 
     //
-    for (let i = 0; i < project.tasks.length; i++) {
-        const task = project.tasks[i]
-
+    project.tasks.forEach((task, i) => {
         // Task is done/undone
         const checkbox = document.querySelector(`#check-${i}`)
         checkbox.addEventListener(`change`, function() {
-            if (this.checked) {
-                task.done = true
-            } else {
-                task.done = false
-            }
-
+            const done = this.checked
+            projectsModule.toggleDoneTask(task, done)
+            projectsModule.updateTasksStats(project)
             displayContent(project)
         })
         
@@ -81,12 +76,13 @@ const updateContent = (project) => {
                     e.target.getAttribute(`project-id`),
                     e.target.getAttribute(`task-id`)
                     )
+                console.log(projectsModule.projects)
                 navigate.project(e)
             }
         }
         const deleteTaskBtn = document.querySelector(`#trash-task-btn-${i}`)
         deleteTaskBtn.addEventListener(`click`, confirmDeleteTask)
-    }
+    })
 }
 
 const react = (project) => {

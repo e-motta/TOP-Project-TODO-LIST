@@ -53,7 +53,8 @@ const navigate = (() => {
     }
 
     const project = e => {
-        const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
+        const project = projects[parseInt(e.target.getAttribute(`project-id`))]
+        // const project = projects.find(p => p.id.toString() === e.target.getAttribute(`project-id`))
 
         const main = document.querySelector(`.main`)
         main.replaceChildren(Project(project))

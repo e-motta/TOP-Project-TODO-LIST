@@ -3,8 +3,8 @@ const module = (() => {
         {
             id: 0,
             name: `Personal`,
-            pending: 6,
-            completed: 5,
+            pending: 0,
+            completed: 1,
             description: `This is a new description`,
             tasks: [
                 {
@@ -21,7 +21,7 @@ const module = (() => {
             id: 1,
             name: `Work`,
             pending: 1,
-            completed: 2,
+            completed: 1,
             description: `This is a work project description`,
             tasks: [
                 {
@@ -44,6 +44,37 @@ const module = (() => {
         },
     ]
     
+    const updatePending = (project) => {
+        const updatedPending = project.tasks.reduce((total, task) => {
+            const done = !task.done ? 1 : 0
+            return total + done
+        }, 0)
+        
+        project.pending = updatedPending
+    }
+
+    const updateCompleted = (project) => {
+        const updatedCompleted = project.tasks.reduce((total, task) => {
+            const done = task.done ? 1 : 0
+            return total + done
+        }, 0)
+        
+        project.completed = updatedCompleted
+    }
+
+    const updateTasksStats = (project) => {
+        updatePending(project)
+        updateCompleted(project)
+    }
+
+    const toggleDoneTask = (task) => {
+        if (!task.done) {
+            task.done = true
+        } else {
+            task.done = false
+        }
+    }
+
     const addNewProject = (name, description) => {
         const p = {
             id: projects.length >= 1 ? projects[projects.length - 1].id + 1 : 0,
@@ -82,6 +113,7 @@ const module = (() => {
         }
     
         p.tasks.push(t)
+        updateTasksStats(p)
     }
 
     const editTask = (projectId, taskId, newName, newDueDate, newDescription, newPriority) => {
@@ -97,10 +129,13 @@ const module = (() => {
     const deleteTask = (projectId, taskId) => {
         const p = projects.find(p => p.id.toString() === projectId)
         p.tasks = p.tasks.filter(t => t.id.toString() !== taskId)
+        updateTasksStats(p)
     }
 
     return {
         projects,
+        updateTasksStats,
+        toggleDoneTask,
         addNewProject,
         editProject,
         deleteProject,
