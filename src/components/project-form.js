@@ -1,59 +1,58 @@
-const component = ((title, saveBtnName, project=null) => {
-    const form = document.createElement(`form`)
-    form.classList.add(`edit-form`)
-    form.action = `#`
-    form.method = `post`
-    
-    const fieldset = document.createElement(`fieldset`)
-    fieldset.classList.add(`edit-fieldset`)
+const component = ((title, saveBtnName, project = null) => {
+  const form = document.createElement('form');
+  form.classList.add('edit-form');
+  form.action = '#';
+  form.method = 'post';
 
-    const legend = document.createElement(`legend`)
-    legend.innerText = title
+  const fieldset = document.createElement('fieldset');
+  fieldset.classList.add('edit-fieldset');
 
-    fieldset.appendChild(legend)
+  const legend = document.createElement('legend');
+  legend.innerText = title;
 
-    const projectLabel = document.createElement(`label`)
-    projectLabel.setAttribute(`for`, `title`)
-    projectLabel.appendChild(document.createTextNode(`Project`))
+  fieldset.appendChild(legend);
 
-    fieldset.appendChild(projectLabel)
+  const projectLabel = document.createElement('label');
+  projectLabel.setAttribute('for', 'title');
+  projectLabel.appendChild(document.createTextNode('Project'));
 
-    const projectInput = document.createElement(`input`)
-    projectInput.classList.add(`input`)
-    projectInput.id = `title`
-    projectInput.type = `text`
-    projectInput.setAttribute(`required`, `required`)
+  fieldset.appendChild(projectLabel);
 
-    fieldset.appendChild(projectInput)
+  const projectInput = document.createElement('input');
+  projectInput.classList.add('input');
+  projectInput.id = 'title';
+  projectInput.type = 'text';
+  projectInput.setAttribute('required', 'required');
 
-    const descriptionLabel = document.createElement(`label`)
-    descriptionLabel.setAttribute(`for`, `description`)
-    descriptionLabel.appendChild(document.createTextNode(`Description`))
+  fieldset.appendChild(projectInput);
 
-    fieldset.appendChild(descriptionLabel)
+  const descriptionLabel = document.createElement('label');
+  descriptionLabel.setAttribute('for', 'description');
+  descriptionLabel.appendChild(document.createTextNode('Description'));
 
-    const descriptionInput = document.createElement(`textarea`)
-    descriptionInput.classList.add(`input`)
-    descriptionInput.id = `description`
-    descriptionInput.setAttribute(`type`, `text`)
-    descriptionInput.rows = 5
+  fieldset.appendChild(descriptionLabel);
 
-    fieldset.appendChild(descriptionInput)
+  const descriptionInput = document.createElement('textarea');
+  descriptionInput.classList.add('input');
+  descriptionInput.id = 'description';
+  descriptionInput.setAttribute('type', 'text');
+  descriptionInput.rows = 5;
 
-    form.appendChild(fieldset)
+  fieldset.appendChild(descriptionInput);
 
-    const saveBtn = document.createElement(`button`)
-    saveBtn.classList.add(`btn`)
-    saveBtn.classList.add(`add-task-btn`)
-    saveBtn.classList.add(`save-btn`)
-    console.log(project)
-    if (project !== null) saveBtn.setAttribute(`project-id`, project.id)
-    saveBtn.type = `submit`
-    saveBtn.appendChild(document.createTextNode(saveBtnName))
+  form.appendChild(fieldset);
 
-    form.appendChild(saveBtn)
+  const saveBtn = document.createElement('button');
+  saveBtn.classList.add('btn');
+  saveBtn.classList.add('add-task-btn');
+  saveBtn.classList.add('save-btn');
+  if (project !== null) saveBtn.setAttribute('project-id', project.id);
+  saveBtn.type = 'submit';
+  saveBtn.appendChild(document.createTextNode(saveBtnName));
 
-    return form
+  form.appendChild(saveBtn);
+
+  return form;
 });
 
-export default component
+export default component;

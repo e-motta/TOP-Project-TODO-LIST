@@ -1,20 +1,18 @@
-import Project from './project-item'
+import Project from './project-item';
 
 const component = ((projects) => {
-    const allProjects = document.createElement(`div`)
-    allProjects.classList.add(`main-content`)
+  const allProjects = document.createElement('div');
+  allProjects.classList.add('main-content');
 
-    const sectionTitle = document.createElement(`div`)
-    sectionTitle.classList.add(`section-title`)
-    sectionTitle.appendChild(document.createTextNode(`Your projects`))
+  const sectionTitle = document.createElement('div');
+  sectionTitle.classList.add('section-title');
+  sectionTitle.appendChild(document.createTextNode('Your projects'));
 
-    allProjects.appendChild(sectionTitle)
+  allProjects.appendChild(sectionTitle);
 
-    for (let project of projects) {
-        allProjects.appendChild(Project(project))
-    }
+  projects.forEach((project) => allProjects.appendChild(Project(project)));
 
-    return allProjects
+  return allProjects;
 });
 
-export default component
+export default component;

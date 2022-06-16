@@ -1,6 +1,6 @@
 import './reset.css';
 import './style.css';
 
-import navigate from './navigate'
+import navigate from './navigate';
 
-navigate.initialLoad()
+navigate.initialLoad();

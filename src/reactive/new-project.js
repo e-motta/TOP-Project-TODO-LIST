@@ -1,40 +1,43 @@
-import navigate from "../navigate"
-import projectsModule from "../projects"
+import navigate from '../navigate';
+import projectsModule from '../projects';
 
 const addNavigation = () => {
-    const backBtn = document.querySelector(`.main-header>.btn`)
-    backBtn.addEventListener(`click`, navigate.home)
-}
+  const backBtn = document.querySelector('.main-header>.btn');
+  backBtn.addEventListener('click', navigate.home);
+};
 
 const updateContent = () => {
-    const projectInput = document.querySelector(`#title`)
-    const descriptionInput = document.querySelector(`#description`)
+  const projectInput = document.querySelector('#title');
+  const descriptionInput = document.querySelector('#description');
 
-    const saveBtn = document.querySelector(`.save-btn`)
-    saveBtn.addEventListener(`click`, e => {
-        const form = document.querySelector(`form`)
-        const isFormValid = form.checkValidity()
-        if (!isFormValid) {
-            form.reportValidity()
-        } else {
-            e.preventDefault()
+  const saveBtn = document.querySelector('.save-btn');
+  saveBtn.addEventListener('click', (e) => {
+    const form = document.querySelector('form');
+    const isFormValid = form.checkValidity();
+    if (!isFormValid) {
+      form.reportValidity();
+    } else {
+      e.preventDefault();
 
-            const newProjectId = projectsModule.addNewProject(projectInput.value, descriptionInput.value)
-    
-            // create mock element to call navigate method with click event
-            const mockElement = document.createElement(`a`)
-            mockElement.setAttribute(`project-id`, newProjectId)
-            mockElement.addEventListener(`click`, navigate.project)
-            mockElement.click()
-    
-            navigate.reloadSidebar()
-        }
-    })
-}
+      const newProjectId = projectsModule.addNewProject(
+        projectInput.value,
+        descriptionInput.value,
+      );
+
+      // create mock element to call navigate method with click event
+      const mockElement = document.createElement('a');
+      mockElement.setAttribute('project-id', newProjectId);
+      mockElement.addEventListener('click', navigate.project);
+      mockElement.click();
+
+      navigate.reloadSidebar();
+    }
+  });
+};
 
 const react = () => {
-    addNavigation()
-    updateContent()
-}
+  addNavigation();
+  updateContent();
+};
 
-export default react
+export default react;

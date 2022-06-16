@@ -1,113 +1,113 @@
-const component = ((legendName, saveBtnName, project, task=null) => {
-    const form = document.createElement(`form`)
-    form.classList.add(`edit-form`)
-    form.action = `#`
-    form.method = `post`
-    
-    const fieldset = document.createElement(`fieldset`)
-    fieldset.classList.add(`edit-fieldset`)
+const component = ((legendName, saveBtnName, project, task = null) => {
+  const form = document.createElement('form');
+  form.classList.add('edit-form');
+  form.action = '#';
+  form.method = 'post';
 
-    const legend = document.createElement(`legend`)
-    legend.innerText = legendName
+  const fieldset = document.createElement('fieldset');
+  fieldset.classList.add('edit-fieldset');
 
-    fieldset.appendChild(legend)
+  const legend = document.createElement('legend');
+  legend.innerText = legendName;
 
-    const taskLabel = document.createElement(`label`)
-    taskLabel.setAttribute(`for`, `title`)
-    taskLabel.appendChild(document.createTextNode(`Task`))
+  fieldset.appendChild(legend);
 
-    fieldset.appendChild(taskLabel)
+  const taskLabel = document.createElement('label');
+  taskLabel.setAttribute('for', 'title');
+  taskLabel.appendChild(document.createTextNode('Task'));
 
-    const taskInput = document.createElement(`input`)
-    taskInput.classList.add(`input`)
-    taskInput.id = `title`
-    taskInput.type = `text`
-    taskInput.setAttribute(`required`, `required`)
+  fieldset.appendChild(taskLabel);
 
-    fieldset.appendChild(taskInput)
+  const taskInput = document.createElement('input');
+  taskInput.classList.add('input');
+  taskInput.id = 'title';
+  taskInput.type = 'text';
+  taskInput.setAttribute('required', 'required');
 
-    const descriptionLabel = document.createElement(`label`)
-    descriptionLabel.setAttribute(`for`, `description`)
-    descriptionLabel.appendChild(document.createTextNode(`Description`))
+  fieldset.appendChild(taskInput);
 
-    fieldset.appendChild(descriptionLabel)
+  const descriptionLabel = document.createElement('label');
+  descriptionLabel.setAttribute('for', 'description');
+  descriptionLabel.appendChild(document.createTextNode('Description'));
 
-    const descriptionInput = document.createElement(`textarea`)
-    descriptionInput.classList.add(`input`)
-    descriptionInput.id = `description`
-    descriptionInput.setAttribute(`type`, `text`)
-    descriptionInput.rows = 5
+  fieldset.appendChild(descriptionLabel);
 
-    fieldset.appendChild(descriptionInput)
+  const descriptionInput = document.createElement('textarea');
+  descriptionInput.classList.add('input');
+  descriptionInput.id = 'description';
+  descriptionInput.setAttribute('type', 'text');
+  descriptionInput.rows = 5;
 
-    const dueDateLabel = document.createElement(`label`)
-    dueDateLabel.for = `due-date`
-    dueDateLabel.textContent = `Due date`
+  fieldset.appendChild(descriptionInput);
 
-    fieldset.appendChild(dueDateLabel)
+  const dueDateLabel = document.createElement('label');
+  dueDateLabel.for = 'due-date';
+  dueDateLabel.textContent = 'Due date';
 
-    const dueDateInput = document.createElement(`input`)
-    dueDateInput.classList.add(`input`)
-    dueDateInput.id = `due-date`
-    dueDateInput.setAttribute(`required`, `required`)
-    dueDateInput.setAttribute(`type`, `date`)  // *
+  fieldset.appendChild(dueDateLabel);
 
-    fieldset.appendChild(dueDateInput)
+  const dueDateInput = document.createElement('input');
+  dueDateInput.classList.add('input');
+  dueDateInput.id = 'due-date';
+  dueDateInput.setAttribute('required', 'required');
+  dueDateInput.setAttribute('type', 'date');
 
-    const priorityLabel = document.createElement(`label`)
-    priorityLabel.for = `priority`
-    priorityLabel.textContent = `Priority`
+  fieldset.appendChild(dueDateInput);
 
-    fieldset.appendChild(priorityLabel)
+  const priorityLabel = document.createElement('label');
+  priorityLabel.for = 'priority';
+  priorityLabel.textContent = 'Priority';
 
-    const dropdown = document.createElement(`div`)
-    dropdown.classList.add(`dropdown`)
+  fieldset.appendChild(priorityLabel);
 
-    const priorityColor = document.createElement(`div`)
-    priorityColor.classList.add(`priority-color`)  // *
-    
-    dropdown.appendChild(priorityColor)
+  const dropdown = document.createElement('div');
+  dropdown.classList.add('dropdown');
 
-    const dropdownSelect = document.createElement(`select`)  // *
-    dropdownSelect.classList.add(`input`)
-    dropdownSelect.id = `priority`
+  const priorityColor = document.createElement('div');
+  priorityColor.classList.add('priority-color');
 
-    const optionLow = document.createElement(`option`)
-    optionLow.value = `low`
-    optionLow.textContent = `Low`
+  dropdown.appendChild(priorityColor);
 
-    dropdownSelect.appendChild(optionLow)
+  const dropdownSelect = document.createElement('select');
+  dropdownSelect.classList.add('input');
+  dropdownSelect.id = 'priority';
 
-    const optionMedium = document.createElement(`option`)
-    optionMedium.value = `medium`
-    optionMedium.textContent = `Medium`
+  const optionLow = document.createElement('option');
+  optionLow.value = 'low';
+  optionLow.textContent = 'Low';
 
-    dropdownSelect.appendChild(optionMedium)
+  dropdownSelect.appendChild(optionLow);
 
-    const optionHigh = document.createElement(`option`)
-    optionHigh.value = `high`
-    optionHigh.textContent = `High`
+  const optionMedium = document.createElement('option');
+  optionMedium.value = 'medium';
+  optionMedium.textContent = 'Medium';
 
-    dropdownSelect.appendChild(optionHigh)
+  dropdownSelect.appendChild(optionMedium);
 
-    dropdown.appendChild(dropdownSelect)
+  const optionHigh = document.createElement('option');
+  optionHigh.value = 'high';
+  optionHigh.textContent = 'High';
 
-    fieldset.appendChild(dropdown)
+  dropdownSelect.appendChild(optionHigh);
 
-    form.appendChild(fieldset)
+  dropdown.appendChild(dropdownSelect);
 
-    const saveBtn = document.createElement(`button`)
-    saveBtn.classList.add(`btn`)
-    saveBtn.classList.add(`add-task-btn`)
-    saveBtn.classList.add(`save-btn`)
-    saveBtn.setAttribute(`project-id`, project.id)
-    if (task !== null) saveBtn.setAttribute(`task-id`, task.id)
-    saveBtn.type = `submit`
-    saveBtn.appendChild(document.createTextNode(saveBtnName))
+  fieldset.appendChild(dropdown);
 
-    form.appendChild(saveBtn)
+  form.appendChild(fieldset);
 
-    return form
+  const saveBtn = document.createElement('button');
+  saveBtn.classList.add('btn');
+  saveBtn.classList.add('add-task-btn');
+  saveBtn.classList.add('save-btn');
+  saveBtn.setAttribute('project-id', project.id);
+  if (task !== null) saveBtn.setAttribute('task-id', task.id);
+  saveBtn.type = 'submit';
+  saveBtn.appendChild(document.createTextNode(saveBtnName));
+
+  form.appendChild(saveBtn);
+
+  return form;
 });
 
-export default component
+export default component;

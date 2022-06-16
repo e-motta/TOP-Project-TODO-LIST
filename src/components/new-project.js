@@ -1,35 +1,35 @@
-import ProjectForm from './project-form'
+import ProjectForm from './project-form';
 
 const component = (() => {
-    const projectEditContent = document.createElement(`div`)
-    projectEditContent.classList.add(`main-content`)
-    projectEditContent.classList.add(`project-edit-content`)
+  const projectEditContent = document.createElement('div');
+  projectEditContent.classList.add('main-content');
+  projectEditContent.classList.add('project-edit-content');
 
-    const mainHeader = document.createElement(`div`)
-    mainHeader.classList.add(`main-header`)
+  const mainHeader = document.createElement('div');
+  mainHeader.classList.add('main-header');
 
-    const backButton = document.createElement(`button`)
-    backButton.classList.add(`btn`)
-    backButton.setAttribute(`type`, `button`)
+  const backButton = document.createElement('button');
+  backButton.classList.add('btn');
+  backButton.setAttribute('type', 'button');
 
-    const span = document.createElement(`span`)
-    span.classList.add(`iconify`)
-    span.setAttribute(`data-icon`, `mdi-arrow-left`)
+  const span = document.createElement('span');
+  span.classList.add('iconify');
+  span.setAttribute('data-icon', 'mdi-arrow-left');
 
-    backButton.appendChild(span)
+  backButton.appendChild(span);
 
-    backButton.appendChild(document.createTextNode(`All Projects`))
+  backButton.appendChild(document.createTextNode('All Projects'));
 
-    mainHeader.appendChild(backButton)
+  mainHeader.appendChild(backButton);
 
-    projectEditContent.appendChild(mainHeader)
+  projectEditContent.appendChild(mainHeader);
 
-    const title = `Add new project`
-    const saveBtnName = `Add project`
+  const title = 'Add new project';
+  const saveBtnName = 'Add project';
 
-    projectEditContent.appendChild(ProjectForm(title, saveBtnName))
+  projectEditContent.appendChild(ProjectForm(title, saveBtnName));
 
-    return projectEditContent
+  return projectEditContent;
 });
 
-export default component
+export default component;

@@ -1,36 +1,36 @@
-import TaskForm from './task-form'
+import TaskForm from './task-form';
 
 const component = ((project, task) => {
-    const taskEditContent = document.createElement(`div`)
-    taskEditContent.classList.add(`main-content`)
-    taskEditContent.classList.add(`task-edit-content`)
+  const taskEditContent = document.createElement('div');
+  taskEditContent.classList.add('main-content');
+  taskEditContent.classList.add('task-edit-content');
 
-    const mainHeader = document.createElement(`div`)
-    mainHeader.classList.add(`main-header`)
+  const mainHeader = document.createElement('div');
+  mainHeader.classList.add('main-header');
 
-    const backBtn = document.createElement(`button`)
-    backBtn.classList.add(`btn`)
-    backBtn.setAttribute(`project-id`, project.id)
-    backBtn.setAttribute(`type`, `button`)
-    
-    const span = document.createElement(`span`)
-    span.classList.add(`iconify`)
-    span.setAttribute(`data-icon`, `mdi-arrow-left`)
+  const backBtn = document.createElement('button');
+  backBtn.classList.add('btn');
+  backBtn.setAttribute('project-id', project.id);
+  backBtn.setAttribute('type', 'button');
 
-    backBtn.appendChild(span)
+  const span = document.createElement('span');
+  span.classList.add('iconify');
+  span.setAttribute('data-icon', 'mdi-arrow-left');
 
-    backBtn.appendChild(document.createTextNode(` ` + project.name))
+  backBtn.appendChild(span);
 
-    mainHeader.appendChild(backBtn)
+  backBtn.appendChild(document.createTextNode(` ${project.name}`));
 
-    taskEditContent.appendChild(mainHeader)
+  mainHeader.appendChild(backBtn);
 
-    const legendName = `Edit task details`
-    const saveBtnName = `Save changes`
+  taskEditContent.appendChild(mainHeader);
 
-    taskEditContent.appendChild(TaskForm(legendName, saveBtnName, project, task))
+  const legendName = 'Edit task details';
+  const saveBtnName = 'Save changes';
 
-    return taskEditContent
+  taskEditContent.appendChild(TaskForm(legendName, saveBtnName, project, task));
+
+  return taskEditContent;
 });
 
-export default component
+export default component;

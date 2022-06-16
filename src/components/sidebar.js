@@ -1,68 +1,68 @@
 const component = ((projects) => {
-    const sidebar = document.createElement(`div`)
-    sidebar.classList.add(`sidebar`)
+  const sidebar = document.createElement('div');
+  sidebar.classList.add('sidebar');
 
-    const sidebarMenuContainer = document.createElement(`ul`)
-    sidebarMenuContainer.classList.add(`sidebar-menu-container`)
+  const sidebarMenuContainer = document.createElement('ul');
+  sidebarMenuContainer.classList.add('sidebar-menu-container');
 
-    const menuItem = document.createElement(`li`)
-    menuItem.classList.add(`menu-item`)
+  const menuItem = document.createElement('li');
+  menuItem.classList.add('menu-item');
 
-    const menuLink = document.createElement(`a`)
-    menuLink.classList.add(`menu-link`)
-    menuLink.id = `all-projects`
+  const menuLink = document.createElement('a');
+  menuLink.classList.add('menu-link');
+  menuLink.id = 'all-projects';
 
-    const iconifyClipboard = document.createElement(`span`)
-    iconifyClipboard.classList.add(`iconify`)
-    iconifyClipboard.setAttribute(`data-icon`, `mdi-clipboard-check-multiple`)
+  const iconifyClipboard = document.createElement('span');
+  iconifyClipboard.classList.add('iconify');
+  iconifyClipboard.setAttribute('data-icon', 'mdi-clipboard-check-multiple');
 
-    menuLink.appendChild(iconifyClipboard)
-    menuLink.appendChild(document.createTextNode(` Projects`))
-    
-    menuItem.appendChild(menuLink)
+  menuLink.appendChild(iconifyClipboard);
+  menuLink.appendChild(document.createTextNode(' Projects'));
 
-    const subitemsContainer = document.createElement(`ul`)
-    subitemsContainer.classList.add(`subitems-container`)
+  menuItem.appendChild(menuLink);
 
-    for(const project of projects) {
-        const li = document.createElement(`li`)
-        li.classList.add(`subitem`)
+  const subitemsContainer = document.createElement('ul');
+  subitemsContainer.classList.add('subitems-container');
 
-        const a = document.createElement(`a`)
-        a.classList.add(`menu-link`)
-        a.setAttribute(`project-id`, project.id)
-        a.innerText = project.name
+  projects.forEach((project) => {
+    const li = document.createElement('li');
+    li.classList.add('subitem');
 
-        li.appendChild(a)
+    const a = document.createElement('a');
+    a.classList.add('menu-link');
+    a.setAttribute('project-id', project.id);
+    a.innerText = project.name;
 
-        subitemsContainer.appendChild(li)
-    }
+    li.appendChild(a);
 
-    menuItem.appendChild(subitemsContainer)
-    sidebarMenuContainer.appendChild(menuItem)
+    subitemsContainer.appendChild(li);
+  });
 
-    const addProjectBtn = document.createElement(`button`)
-    addProjectBtn.classList.add(`btn`)
-    addProjectBtn.classList.add(`add-project-btn`)
-    addProjectBtn.type = `button`
+  menuItem.appendChild(subitemsContainer);
+  sidebarMenuContainer.appendChild(menuItem);
 
-    const iconifyPlus = document.createElement(`span`)
-    iconifyPlus.classList.add(`iconify`)
-    iconifyPlus.setAttribute(`data-icon`, `mdi-plus`)
+  const addProjectBtn = document.createElement('button');
+  addProjectBtn.classList.add('btn');
+  addProjectBtn.classList.add('add-project-btn');
+  addProjectBtn.type = 'button';
 
-    addProjectBtn.appendChild(iconifyPlus)
+  const iconifyPlus = document.createElement('span');
+  iconifyPlus.classList.add('iconify');
+  iconifyPlus.setAttribute('data-icon', 'mdi-plus');
 
-    const addItemText = document.createElement(`span`)
-    addItemText.classList.add(`add-item-text`)
-    addItemText.appendChild(document.createTextNode(`ADD PROJECT`))
+  addProjectBtn.appendChild(iconifyPlus);
 
-    addProjectBtn.appendChild(addItemText)
+  const addItemText = document.createElement('span');
+  addItemText.classList.add('add-item-text');
+  addItemText.appendChild(document.createTextNode('ADD PROJECT'));
 
-    sidebarMenuContainer.appendChild(addProjectBtn)
+  addProjectBtn.appendChild(addItemText);
 
-    sidebar.appendChild(sidebarMenuContainer)
+  sidebarMenuContainer.appendChild(addProjectBtn);
 
-    return sidebar
+  sidebar.appendChild(sidebarMenuContainer);
+
+  return sidebar;
 });
 
 export default component;

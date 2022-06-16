@@ -1,34 +1,34 @@
-import TaskForm from './task-form'
+import TaskForm from './task-form';
 
 const component = ((project) => {
-    const taskAddContent = document.createElement(`div`)
-    taskAddContent.classList.add(`main-content`)
-    taskAddContent.classList.add(`task-edit-content`)
+  const taskAddContent = document.createElement('div');
+  taskAddContent.classList.add('main-content');
+  taskAddContent.classList.add('task-edit-content');
 
-    const mainHeader = document.createElement(`div`)
-    mainHeader.classList.add(`main-header`)
+  const mainHeader = document.createElement('div');
+  mainHeader.classList.add('main-header');
 
-    const backBtn = document.createElement(`button`)
-    backBtn.classList.add(`btn`)
-    backBtn.setAttribute(`project-id`, project.id)
-    backBtn.setAttribute(`type`, `button`)
-    
-    const span = document.createElement(`span`)
-    span.classList.add(`iconify`)
-    span.setAttribute(`data-icon`, `mdi-arrow-left`)
+  const backBtn = document.createElement('button');
+  backBtn.classList.add('btn');
+  backBtn.setAttribute('project-id', project.id);
+  backBtn.setAttribute('type', 'button');
 
-    backBtn.appendChild(span)
+  const span = document.createElement('span');
+  span.classList.add('iconify');
+  span.setAttribute('data-icon', 'mdi-arrow-left');
 
-    mainHeader.appendChild(backBtn)
+  backBtn.appendChild(span);
 
-    taskAddContent.appendChild(mainHeader)
+  mainHeader.appendChild(backBtn);
 
-    const legendName = `New task details`
-    const saveBtnName = `Add task`
+  taskAddContent.appendChild(mainHeader);
 
-    taskAddContent.appendChild(TaskForm(legendName, saveBtnName, project))
+  const legendName = 'New task details';
+  const saveBtnName = 'Add task';
 
-    return taskAddContent
+  taskAddContent.appendChild(TaskForm(legendName, saveBtnName, project));
+
+  return taskAddContent;
 });
 
-export default component
+export default component;
